@@ -18,8 +18,6 @@ public class EmployeeDAO {
     private static final String UPDATE_EMPLOYEE_SALARY = "UPDATE employees SET salary = ? WHERE employee_id = ?";
     private static final String SELECT_ALL_ATTRIBUTES_EMPLOYEE = "SELECT  employee_id, first_name, last_name, email, salary, job_id ,e.department_id, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id";
     
-    
-    
     private static final int EMPLOYEE_ID_COLUMN = 1;
     private static final int FIRST_NAME_COLUMN = 2;
     private static final int LAST_NAME_COLUMN = 3;
@@ -76,10 +74,6 @@ public class EmployeeDAO {
         return employees;
     }
     
-    
-    
-    
-
     public Employee findById(int id) {
         Employee employee = null;
         try {
@@ -172,11 +166,6 @@ public class EmployeeDAO {
     
     private Employee toEmployeeWithDepartmentId(ResultSet row) throws SQLException {
         Employee employee = new Employee();
-//        employee.setId(row.getInt(EMPLOYEE_ID_COLUMN));
-//        employee.setFirstName(row.getString(FIRST_NAME_COLUMN));
-//        employee.setLastName(row.getString(LAST_NAME_COLUMN));
-//        employee.setEmail(row.getString(EMAIL_COLUMN));
-//        employee.setSalary(row.getFloat(SALARY_COLUMN));
         employee = toEmployee(row);
         employee.setJobId(row.getString(JOB_ID_COLUMN));
         employee.setDepartmentId(row.getInt(DEPARTMENT_ID_COLUMN));
